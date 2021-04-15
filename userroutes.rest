@@ -1,0 +1,52 @@
+POST http://localhost:5000/api/user-register
+Content-Type: application/json
+
+{
+        "firstname": "Rohit",
+        "lastname": "Singh",
+        "mobile_number": "8888888888",
+        "email": "rohit@gmail.com",
+        "gender": "male",
+        "password": "Abc@123"
+}
+
+###
+
+PUT http://localhost:5000/api/user-update/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTgzMTMyNTYsImV4cCI6MTYxODMxNTA1Nn0.y50WloVhJyBy_3cPICOH1wykY5H859i4pFLalhKlLMU
+
+{
+        "firstname": "Shubham",
+        "lastname": "Bhatt",
+        "mobile_number": "9999999000",
+        "email": "shubhambhatt@gmail.com",
+        "gender": "male",
+        "password": "Abc@123"
+}
+
+###
+
+GET  http://localhost:5000/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTgzMTMyNTYsImV4cCI6MTYxODMxNTA1Nn0.y50WloVhJyBy_3cPICOH1wykY5H859i4pFLalhKlLMU
+
+
+###
+
+DELETE http://localhost:5000/api/delete-user/3
+
+
+###
+
+POST http://localhost:5000/api/user-login
+Content-Type: application/json
+
+{
+    "email": "shubhambhatt@gmail.com",
+    "password": "Abc@123"
+}
+
+###
+
+GET  http://localhost:5000/api/current-user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTgzMTU0MDYsImV4cCI6MTYxODMxNzIwNn0.8Ls-6mgTSt8AxXB1A7EHDFuRcJuhAXo8virwSFP05zQ

@@ -1,0 +1,309 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Todo List Api's",
+    "description": "Todo List Api's In Node Backend"
+  },
+  "host": "localhost:5000",
+  "basePath": "/api",
+  "tags": [],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Enter your bearer token in the format **Bearer &lt;token>**"
+    },
+    "oAuthSample": {
+      "type": "oauth2",
+      "authorizationUrl": "https://petstore.swagger.io/oauth/authorize",
+      "flow": "implicit",
+      "scopes": {
+        "read_pets": "read your pets",
+        "write_pets": "modify pets in your account"
+      }
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/user-update/{id}": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "Api to update user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "params",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstname": {
+                  "type": "string",
+                  "example": "firstname"
+                },
+                "lastname": {
+                  "type": "string",
+                  "example": "lastname"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "email"
+                },
+                "gender": {
+                  "type": "string",
+                  "example": "gender"
+                },
+                "mobile_number": {
+                  "type": "string",
+                  "example": "7778889990"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "password"
+                }
+              },
+              "required": [
+                "firstname",
+                "lastname",
+                "email",
+                "gender",
+                "mobile_number",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Added successfully"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Api to get users",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "params",
+            "type": "string",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetched successfully"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Api to get users",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "params",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetched successfully"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/delete-user/{id}": {
+      "delete": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/current-user": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user-register": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Api to create user",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstname": {
+                  "type": "string",
+                  "example": "firstname"
+                },
+                "lastname": {
+                  "type": "string",
+                  "example": "lastname"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "email"
+                },
+                "gender": {
+                  "type": "string",
+                  "example": "gender"
+                },
+                "mobile_number": {
+                  "type": "string",
+                  "example": "7778889990"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "password"
+                }
+              },
+              "required": [
+                "firstname",
+                "lastname",
+                "email",
+                "gender",
+                "mobile_number",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Added successfully"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/user-login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "description": "Api to login",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "shubhambhatt@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Abc@123"
+                }
+              },
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Token generated"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ]
+}
