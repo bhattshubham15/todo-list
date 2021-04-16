@@ -18,7 +18,7 @@ exports.createUser = function (req, res) {
             $password:"password",
         }
         },
-    * #swagger.responses[200] = { description: 'Added successfully' }
+    * #swagger.responses[200] = { description: 'Data inserted!' }
     * #swagger.responses[500] = { description: 'Server error' }
     */
     const body = req.body;
@@ -57,7 +57,7 @@ exports.updateUser = function (req, res) {
             $password:"password",
         }
         },
-    * #swagger.responses[200] = { description: 'Added successfully' }
+    * #swagger.responses[200] = { description: 'Updated successfully' }
     * #swagger.responses[500] = { description: 'Server error' }
     */
     const body = req.body;
@@ -112,12 +112,20 @@ exports.getUsers = function (req, res) {
         }
         return res.status(200).json({
             success: 1,
+            message: 'Fetched successfully',
             data: results
         });
     });
 }
 
 exports.deleteUser = function (req, res) {
+    /**
+     * #swagger.tags = ['User'],
+     * #swagger.description = 'Api to delete user',
+     * #swagger.parameters['id'] = {in: 'params'},
+     * #swagger.responses[200] = { description: 'Deleted succesfully!' }
+     * #swagger.responses[500] = { description: 'Server error' }
+    */
     const { id } = req.params;
     userModel.deleteUser(id, (err, results) => {
         if (err) {
@@ -135,6 +143,12 @@ exports.deleteUser = function (req, res) {
 }
 
 exports.getCurrentUser = function (req, res) {
+    /**
+     * #swagger.tags = ['User'],
+     * #swagger.description = 'Api to check current user on the basis of token',
+     * #swagger.responses[200] = { description: 'User details fetched!' }
+     * #swagger.responses[500] = { description: 'Server error' }
+    */
     if (req.user && req.user.firstname && req.user.lastname) {
         return res.status(200).json(req.user);
     }

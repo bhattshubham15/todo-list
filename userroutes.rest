@@ -30,11 +30,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoY
 GET  http://localhost:5000/api/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTgzMTMyNTYsImV4cCI6MTYxODMxNTA1Nn0.y50WloVhJyBy_3cPICOH1wykY5H859i4pFLalhKlLMU
 
-
 ###
 
 DELETE http://localhost:5000/api/delete-user/3
-
 
 ###
 
@@ -50,3 +48,47 @@ Content-Type: application/json
 
 GET  http://localhost:5000/api/current-user
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTgzMTU0MDYsImV4cCI6MTYxODMxNzIwNn0.8Ls-6mgTSt8AxXB1A7EHDFuRcJuhAXo8virwSFP05zQ
+
+###
+
+POST http://localhost:5000/api/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTg0NjI0NjMsImV4cCI6MTYxODQ2NDI2M30.QglWCocYV4fHB_sCZSlXhFsuLQZBH7lEqAKS_AH6ZhY
+
+###
+
+POST http://localhost:5000/api/create-todo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTg0OTM1OTgsImV4cCI6MTYxODQ5NTM5OH0.Bm7ZB0180tPfeD_u_6wCAKUamo7eyOThJ0OfO6_koVw
+Content-Type: application/json
+
+{
+        "task_details": "Jogging",
+        "todo_time": "2021-05-15 18:27:06",
+        "status":  "completed"
+}
+
+###
+
+PUT  http://localhost:5000/api/update-todo/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTg0OTE1MzcsImV4cCI6MTYxODQ5MzMzN30.b8fvZm6gqrKG6UWL0qYzcmytpR3Rx_oRHabDPKOef04
+Content-Type: application/json
+
+{
+        "task_details": "Running",
+        "todo_time": "2021-05-15 18:27:06",
+        "status":  "pending"
+}
+
+###
+
+GET  http://localhost:5000/api/view-todo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTg0OTE1MzcsImV4cCI6MTYxODQ5MzMzN30.b8fvZm6gqrKG6UWL0qYzcmytpR3Rx_oRHabDPKOef04
+
+###
+
+GET  http://localhost:5000/api/view-todo/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTg0OTM1OTgsImV4cCI6MTYxODQ5NTM5OH0.Bm7ZB0180tPfeD_u_6wCAKUamo7eyOThJ0OfO6_koVw
+
+###
+
+DELETE   http://localhost:5000/api/delete-todo/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTg0OTM1OTgsImV4cCI6MTYxODQ5NTM5OH0.Bm7ZB0180tPfeD_u_6wCAKUamo7eyOThJ0OfO6_koVw

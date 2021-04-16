@@ -95,7 +95,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Added successfully"
+            "description": "Updated successfully"
           },
           "412": {
             "description": "Precondition Failed"
@@ -156,37 +156,41 @@
     },
     "/delete-user/{id}": {
       "delete": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "description": "Api to delete user",
         "parameters": [
           {
             "name": "id",
-            "in": "path",
+            "in": "params",
             "required": true,
             "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Deleted succesfully!"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Server error"
           }
         }
       }
     },
     "/current-user": {
       "get": {
-        "tags": [],
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "description": "Api to check current user on the basis of token",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "User details fetched!"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Server error"
           }
         }
       }
@@ -244,7 +248,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Added successfully"
+            "description": "Data inserted!"
           },
           "412": {
             "description": "Precondition Failed"
@@ -292,6 +296,217 @@
           },
           "412": {
             "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/create-todo": {
+      "post": {
+        "tags": [
+          "Todo"
+        ],
+        "description": "Api to create todo",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "task_details": {
+                  "type": "string",
+                  "example": "Jogging"
+                },
+                "todo_time": {
+                  "type": "string",
+                  "example": "2021-05-15 18:27:06"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "completed"
+                }
+              },
+              "required": [
+                "task_details",
+                "todo_time",
+                "status"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo created!"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/update-todo/{id}": {
+      "put": {
+        "tags": [
+          "Todo"
+        ],
+        "description": "Api to update todo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "body",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "type": "string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "task_details": {
+                  "type": "string",
+                  "example": "Jogging"
+                },
+                "todo_time": {
+                  "type": "string",
+                  "example": "2021-05-15 18:27:06"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "completed"
+                }
+              },
+              "required": [
+                "task_details",
+                "todo_time",
+                "status"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo updated!"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/view-todo": {
+      "get": {
+        "tags": [
+          "Todo"
+        ],
+        "description": "Api to view todo list",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo list fetched!"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/view-todo/{id}": {
+      "get": {
+        "tags": [
+          "Todo"
+        ],
+        "description": "Api to view todo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "params",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "id": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo details fetched!"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/delete-todo/{id}": {
+      "delete": {
+        "tags": [
+          "Todo"
+        ],
+        "description": "Api to delete todo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "params",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "id": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Todo deleted!"
           },
           "500": {
             "description": "Server error"
