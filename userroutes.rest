@@ -40,7 +40,7 @@ POST http://localhost:5000/api/user-login
 Content-Type: application/json
 
 {
-    "email": "shubhambhatt@gmail.com",
+    "email": "prakhar@gmail.com",
     "password": "Abc@123"
 }
 
@@ -57,23 +57,23 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoY
 ###
 
 POST http://localhost:5000/api/create-todo
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTg0OTM1OTgsImV4cCI6MTYxODQ5NTM5OH0.Bm7ZB0180tPfeD_u_6wCAKUamo7eyOThJ0OfO6_koVw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InByYWtoYXJAZ21haWwuY29tIiwiaWF0IjoxNjE4NTU2NTEwLCJleHAiOjE2MTg1NTgzMTB9.XdUeccMzHUw9mIm3XH3Tw586jF9BMhP2EMq_VHgPrZM
 Content-Type: application/json
 
 {
-        "task_details": "Jogging",
-        "todo_time": "2021-05-15 18:27:06",
+        "task_details": "Junks",
+        "todo_time": "2021-04-16 18:27:06",
         "status":  "completed"
 }
 
 ###
 
 PUT  http://localhost:5000/api/update-todo/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTg0OTE1MzcsImV4cCI6MTYxODQ5MzMzN30.b8fvZm6gqrKG6UWL0qYzcmytpR3Rx_oRHabDPKOef04
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTg1NTY0MzEsImV4cCI6MTYxODU1ODIzMX0.HT5yB-T4BIcsHCtCRXSGkw5Tju2ybZCMuUkVLMphpl0
 Content-Type: application/json
 
 {
-        "task_details": "Running",
+        "task_details": "Shop",
         "todo_time": "2021-05-15 18:27:06",
         "status":  "pending"
 }
@@ -92,3 +92,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoY
 
 DELETE   http://localhost:5000/api/delete-todo/1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNodWJoYW1iaGF0dEBnbWFpbC5jb20iLCJpYXQiOjE2MTg0OTM1OTgsImV4cCI6MTYxODQ5NTM5OH0.Bm7ZB0180tPfeD_u_6wCAKUamo7eyOThJ0OfO6_koVw
+
+###
+
+GET http://localhost:5000/api/write-users-to-csv

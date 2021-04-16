@@ -27,6 +27,7 @@ exports.createUser = function (req, res) {
     userModel.create(body, (err, results) => {
         if (err) {
             console.log(err);
+            response.onError(body, err, req.originalUrl, req.user.id);
             return res.status(500).json({
                 success: 0,
                 message: "Database connection error"

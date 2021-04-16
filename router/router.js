@@ -4,6 +4,7 @@ const loginController = require('../controller/logincontroller');
 const todoController = require('../controller/todolistcontroller');
 const userValidateMiddleware = require('../validator/uservalidator');
 const authMiddleware = require('../middleware/authmiddleware');
+const csvController = require('../controller/writetocsvcontroller');
 
 // user api's
 router.put('/user-update/:id', [authMiddleware.authenticateToken, userValidateMiddleware.addUser], userController.updateUser);
@@ -22,5 +23,8 @@ router.put('/update-todo/:id', authMiddleware.authenticateToken, todoController.
 router.get('/view-todo', authMiddleware.authenticateToken, todoController.viewTodoList);
 router.get('/view-todo/:id', authMiddleware.authenticateToken, todoController.viewTodo);
 router.delete('/delete-todo/:id', authMiddleware.authenticateToken, todoController.deleteTodo);
+
+// write to csv
+router.get('/write-users-to-csv', csvController.write);
 
 module.exports = router;
