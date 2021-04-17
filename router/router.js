@@ -8,7 +8,8 @@ const csvController = require('../controller/writetocsvcontroller');
 
 // user api's
 router.put('/user-update/:id', [authMiddleware.authenticateToken, userValidateMiddleware.addUser], userController.updateUser);
-router.get('/users', authMiddleware.authenticateToken, userController.getUsers);
+// router.get('/users', authMiddleware.authenticateToken, userController.getUsers);
+router.get('/users', userController.getUsers);
 router.get('/users/:id', authMiddleware.authenticateToken, userController.getUsers);
 router.delete('/delete-user/:id', authMiddleware.authenticateToken, userController.deleteUser);
 router.get('/current-user', authMiddleware.authenticateToken, userController.getCurrentUser);

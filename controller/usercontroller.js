@@ -1,5 +1,6 @@
 const userModel = require("../model/user");
 const { genSaltSync, hashSync, compareSync } = require("bcrypt");
+const client = require("../redis");
 
 exports.createUser = function (req, res) {
     /**
@@ -103,20 +104,36 @@ exports.getUsers = function (req, res) {
     if (id) {
         req.id = id;
     }
-    userModel.getUsers(req, (err, results) => {
-        if (err) {
-            console.log(err);
-            return res.status(500).json({
-                success: 0,
-                message: "Database connection error"
-            })
-        }
-        return res.status(200).json({
-            success: 1,
-            message: 'Fetched successfully',
-            data: results
-        });
-    });
+    try {
+        client.get("users", async (err, jobs) => {
+            if (err) throw err;
+            if (jobs) {
+                res.status(200).json({
+                    success: 1,
+                    message: 'Fetched from redis',
+                    data: JSON.parse(jobs)
+                })
+            } else {
+                userModel.getUsers(req, (error, results) => {
+                    if (error) {
+                        console.log(error);
+                        return res.status(500).json({
+                            success: 0,
+                            message: "Database connection error"
+                        })
+                    }
+                    client.setex("users", 20, JSON.stringify(results));
+                    return res.status(200).json({
+                        success: 1,
+                        message: 'Fetched successfully',
+                        data: results
+                    });
+                });
+            }
+        })
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
 }
 
 exports.deleteUser = function (req, res) {
